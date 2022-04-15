@@ -31,14 +31,12 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 </xsl:for-each>
               </xsl:attribute>
               <failure>
-                <message>
-                  <xsl:attribute name="message">
-                    <xsl:value-of select="text" />
-                  </xsl:attribute>
-                  <xsl:attribute name="type">
-                    <xsl:value-of select="id" />
-                  </xsl:attribute>
-                </message>
+                <xsl:attribute name="message">
+                  <xsl:value-of select="text" />
+                </xsl:attribute>
+                <xsl:attribute name="type">
+                  <xsl:value-of select="id" />
+                </xsl:attribute>
               </failure>
             </testcase>
           </xsl:for-each>
