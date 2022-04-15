@@ -57,3 +57,5 @@ if __name__ == "__main__":
         os.makedirs(dirname)
 
     newdom.write(args.output_file, xml_declaration=True, pretty_print=True, encoding="utf-8")
+
+    sys.exit(0)
