@@ -18,7 +18,7 @@ In your cmake file, find this package and call the macro to add the test.
 
 ```cmake
 if(CATKIN_ENABLE_TESTING)
-  find_package(catkin REQUIRED COMPONENTS catkin_lint_cmake)
+  find_package(catkin_lint_cmake REQUIRED)
   catkin_add_catkin_lint_test([ARGS])
 endif()
 ```
