@@ -9,7 +9,7 @@
     CMake macro to run catkin_lint as a catkin_run_test.
   </description>
 
-  <license>ToDO</license>
+  <license>BSD</license>
 
   <maintainer email="MatthijsBurgh@outlook.com">Matthijs van der Burgh</maintainer>
 
