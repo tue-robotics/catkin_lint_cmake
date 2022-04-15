@@ -39,12 +39,16 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 <xsl:attribute name="type">
                   <xsl:value-of select="id" />
                 </xsl:attribute>
-                <xsl:value-of select="location/package" /><xsl:text>: </xsl:text> <xsl:value-of select="location/file" />
+                <xsl:value-of select="location/package" /><xsl:text>: </xsl:text>
+                <!-- Optional filename followed by colon -->
+                <xsl:if test="location/file != ''">
+                  <xsl:value-of select="location/file" /><xsl:text>: </xsl:text>
+                </xsl:if>
                 <!-- Optional line number between brackets -->
                 <xsl:if test="location/line != ''">
                   <xsl:text>(</xsl:text><xsl:value-of select="location/line" /><xsl:text>)</xsl:text>
                 </xsl:if>
-                <xsl:text>: </xsl:text><xsl:value-of select="name()" /><xsl:text>: </xsl:text><xsl:value-of select="text" />
+                <xsl:value-of select="name()" /><xsl:text>: </xsl:text><xsl:value-of select="text" />
               </failure>
             </testcase>
           </xsl:for-each>
