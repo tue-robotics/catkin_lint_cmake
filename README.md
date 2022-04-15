@@ -1,5 +1,7 @@
 # catkin_lint_cmake
 
+[![CI](https://github.com/tue-robotics/catkin_lint_cmake/workflows/CI/badge.svg)](https://github.com/tue-robotics/catkin_lint_cmake/actions)
+
 Catkin macro to run `catkin_lint` as a catkin `run_test`.
 
 The [`catkin_lint`](https://github.com/fkie/catkin_lint) library is wrapped to convert it's xml scheme to a JUnit scheme.
