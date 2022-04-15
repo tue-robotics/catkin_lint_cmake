@@ -7,7 +7,10 @@ import lxml.etree as ET
 import os.path
 import time
 
+import sys
+sys.path.append("/usr/share/catkin-lint")
 from catkin_lint.main import prepare_arguments, run_linter
+
 import rospkg
 
 

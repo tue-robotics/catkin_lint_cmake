@@ -33,7 +33,7 @@ endfunction()
 
 find_package (Python COMPONENTS Interpreter)
 execute_process(
-    COMMAND ${Python_EXECUTABLE} -c "import catkin_lint; print(catkin_lint.__version__)"
+    COMMAND ${Python_EXECUTABLE} -c "import sys; sys.path.append('/usr/share/catkin-lint'); import catkin_lint; print(catkin_lint.__version__)"
     RESULT_VARIABLE CATKIN_LINT_NOT_FOUND
     OUTPUT_VARIABLE CATKIN_LINT_VERSION
     ERROR_QUIET
