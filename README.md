@@ -25,3 +25,7 @@ endif()
 
 By default, it runs in quiet mode with XML output. You can overrule the quiet mode, but not the XML output. No other default arguments have been overridden.
 All arguments of the function are passed to `catkin_lint` ([`catkin_lint` command line arguments](https://fkie.github.io/catkin_lint/usage/)).
+
+_Important_: `catkin_lint` will only give a non-zero error-code in case of errors.
+Though the macro will take all issues into account based on the selected severity level.
+So with `-W2` even a `notice` will cause the test to fail.
