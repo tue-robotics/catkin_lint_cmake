@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model
+  href="http://download.ros.org/schema/package_format3.xsd"
+  schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>catkin_lint_cmake</name>
+  <version>0.0.1</version>
+  <description>
+    CMake macro to run catkin_lint as a catkin_run_test.
+  </description>
+
+  <license>ToDO</license>
+
+  <maintainer email="MatthijsBurgh@outlook.com">Matthijs van der Burgh</maintainer>
+
+  <author email="MatthijsBurgh@outlook.com">Matthijs van der Burgh</author>
+
+  <url type="repository">https://github.com/tue-robotics/catkin_lint_cmake.git</url>
+  <url type="bugtracker">https://github.com/tue-robotics/catkin_lint_cmake/issues</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>python3-catkin-lint</exec_depend>
+  <exec_depend>python3-lxml</exec_depend>
+  <exec_depend>python3-rospkg</exec_depend>
+
+</package>

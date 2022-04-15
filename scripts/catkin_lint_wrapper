@@ -1,0 +1,59 @@
+#! /usr/bin/env python
+
+import argparse
+from contextlib import redirect_stdout
+import io
+import lxml.etree as ET
+import os.path
+import time
+
+from catkin_lint.main import prepare_arguments, run_linter
+import rospkg
+
+
+ROSPACK = None
+
+
+def _get_rospack() -> rospkg.RosPack:
+    global ROSPACK
+    if ROSPACK is None:
+        ROSPACK = rospkg.RosPack()
+    return ROSPACK
+
+
+def _get_xsl_filename() -> str:
+    r = _get_rospack()
+    return os.path.join(r.get_path("catkin_lint_cmake"), "resources", "catkin_lint-junit.xsl")
+
+
+if __name__ == "__main__":
+    import argparse
+    import sys
+
+    parser = prepare_arguments(argparse.ArgumentParser())
+    parser.add_argument(
+        "--output-file", metavar="OUTPUT_XML", type=str, help="Filename where to write the test results"
+    )
+    sys.argv.append("--xml")  # We need XML output
+    args = parser.parse_args()
+
+    with redirect_stdout(io.StringIO()) as f:
+        start = time.time()
+        run_linter(args)
+        end = time.time()
+    xml_string = f.getvalue()
+
+    dom = ET.fromstring(xml_string)
+    dom.set("time", f"{end-start:.4f}")  # Add execution time
+    pkg_name = os.path.basename(args.path[0])
+    dom.set("package", pkg_name)  # Add package name for when test succeeds
+
+    xslt = ET.parse(_get_xsl_filename())
+    transform = ET.XSLT(xslt)
+    newdom = transform(dom)
+
+    dirname = os.path.dirname(args.output_file)
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+
+    newdom.write(args.output_file, xml_declaration=True, pretty_print=True, encoding="utf-8")
