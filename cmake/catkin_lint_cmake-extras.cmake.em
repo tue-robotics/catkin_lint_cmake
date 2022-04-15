@@ -25,7 +25,7 @@ function(catkin_add_catkin_lint_test)
   endif()
 
   set(output_file_name "${CATKIN_TEST_RESULTS_DIR}/${PROJECT_NAME}/catkin_lint.xml")
-  set(cmd "${CATKIN_LINT_CMAKE_SCRIPTS_DIR}/catkin_lint_wrapper -q ${ARGN} --xml ${CMAKE_SOURCE_DIR} --output-file ${output_file_name}")
+  set(cmd "${CATKIN_LINT_CMAKE_SCRIPTS_DIR}/catkin_lint_wrapper -q ${ARGN} --output xml ${CMAKE_SOURCE_DIR} --output-file ${output_file_name}")
   catkin_run_tests_target("catkin_lint" "lint" "catkin_lint.xml"
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     COMMAND ${cmd})

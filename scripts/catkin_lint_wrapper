@@ -37,7 +37,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--output-file", metavar="OUTPUT_XML", type=str, help="Filename where to write the test results"
     )
-    sys.argv.append("--xml")  # We need XML output
+    sys.argv.extend(["--output", "xml"])  # We need XML output
     args = parser.parse_args()
 
     with redirect_stdout(io.StringIO()) as f:
