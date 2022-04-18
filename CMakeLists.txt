@@ -3,6 +3,8 @@ project(catkin_lint_cmake)
 
 find_package(catkin REQUIRED)
 
+catkin_python_setup()
+
 catkin_package(CFG_EXTRAS ${PROJECT_NAME}-extras.cmake)
 
 install(PROGRAMS scripts/catkin_lint_wrapper
