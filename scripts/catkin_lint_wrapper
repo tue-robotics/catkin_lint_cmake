@@ -1,15 +1,13 @@
 #! /usr/bin/env python
 
 import argparse
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 import io
 import lxml.etree as ET
 import os.path
 import time
 
-import sys
-sys.path.append("/usr/share/catkin-lint")
-from catkin_lint.main import prepare_arguments, run_linter
+from catkin_lint_cmake.main import run_linter, prepare_arguments
 
 import rospkg
 
@@ -34,17 +32,15 @@ if __name__ == "__main__":
     import sys
 
     parser = prepare_arguments(argparse.ArgumentParser())
-    parser.add_argument(
-        "--output-file", metavar="OUTPUT_XML", type=str, help="Filename where to write the test results"
-    )
-    sys.argv.extend(["--output", "xml"])  # We need XML output
     args = parser.parse_args()
+    print(args)
 
-    with redirect_stdout(io.StringIO()) as f:
-        start = time.time()
-        run_linter(args)
-        end = time.time()
-    xml_string = f.getvalue()
+    with redirect_stdout(io.StringIO()) as stdout:
+        with redirect_stderr(io.StringIO()) as stderr:
+            start = time.time()
+            exit_code = run_linter(args)
+            end = time.time()
+    xml_string = stdout.getvalue()
 
     dom = ET.fromstring(xml_string)
     dom.set("time", f"{end-start:.4f}")  # Add execution time
