@@ -1,6 +1,6 @@
 # catkin_lint_cmake
 
-[![CI](https://github.com/tue-robotics/catkin_lint_cmake/workflows/CI/badge.svg)](https://github.com/tue-robotics/catkin_lint_cmake/actions)
+[![CI](https://github.com/tue-robotics/catkin_lint_cmake/actions/workflows/main.yml/badge.svg)](https://github.com/tue-robotics/catkin_lint_cmake/actions/workflows/main.yml)
 
 Catkin macro to run `catkin_lint` as a catkin `run_test`.
 
